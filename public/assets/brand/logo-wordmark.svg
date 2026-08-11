@@ -1,0 +1,7 @@
+<svg width="440" height="72" viewBox="0 0 440 72" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(4,4)">
+    <path d="M20 22C20 12.5 44 12.5 44 22" stroke="#4FB99C" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+    <path d="M16.5 23H47.5L42.3 53.6C41.9 56.6 39.3 58.8 36.3 58.8H27.7C24.7 58.8 22.1 56.6 21.7 53.6L16.5 23Z" fill="#8FE3CB"/>
+  </g>
+  <text x="76" y="45" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#191C1A">Collective Bucket</text>
+</svg>

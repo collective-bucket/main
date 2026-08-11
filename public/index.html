@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Collective Bucket</title>
+<meta name="description" content="collective-bucket GitHub organizasyonu altında barınan, Firebase Hosting + GitHub Actions ile otomatik yayınlanan statik PoC'lerin listesi." />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico" />
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
+<meta property="og:title" content="Collective Bucket" />
+<meta property="og:description" content="collective-bucket GitHub organizasyonu altında barınan, Firebase Hosting + GitHub Actions ile otomatik yayınlanan statik PoC'lerin listesi." />
+<meta property="og:image" content="assets/brand/social-preview.png" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <img src="assets/logo.svg" alt="Collective Bucket logosu" />
+      <span>Collective Bucket</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#repolar">Repolar</a>
+      <a href="#yeni-olustur">Yeni Oluştur</a>
+      <a href="#hakkinda">Hakkında</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="https://github.com/collective-bucket" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- BAŞLIK + KISA AÇIKLAMA -->
+  <section class="hero" style="border-top:none;">
+    <div class="wrap">
+      <h1>Collective Bucket</h1>
+      <p class="lead">
+        <code>collective-bucket</code> GitHub organizasyonu altında barınan, statik
+        PoC'lerden oluşan bir koleksiyon. Her repo kendi Firebase Hosting site'ına
+        ve GitHub Actions workflow'una sahiptir; <code>main</code>'e push/merge
+        sonrası otomatik olarak yayınlanır.
+      </p>
+      <div class="hero-meta">
+        <span>organizasyon: <a href="https://github.com/collective-bucket" target="_blank" rel="noopener">github.com/collective-bucket</a></span>
+        <span class="sep">·</span>
+        <span>yayın: Firebase Hosting (Spark / ücretsiz katman)</span>
+        <span class="sep">·</span>
+        <span>CI: GitHub Actions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPOLAR -->
+  <section id="repolar">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2>Repolar</h2>
+        <p><code>collective-bucket</code> organizasyonundaki tüm repolar. Liste <code>assets/repos.json</code>'dan okunur, yeni bir repo eklendiğinde buraya bir kayıt eklemek yeterlidir.</p>
+      </div>
+      <div class="repo-grid" id="repo-list">
+        <p class="repo-error">Yükleniyor…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- YENİ OLUŞTUR -->
+  <section id="yeni-olustur">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2>Yeni Oluştur</h2>
+        <p>Yeni bir PoC eklemek ya da mevcut bir repoya katkı sağlamak için:</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <div>
+            <strong>Repo aç ya da PR at.</strong>
+            <p><a href="https://github.com/organizations/collective-bucket/repositories/new" target="_blank" rel="noopener">collective-bucket</a> organizasyonunda yeni bir repo oluştur, ya da mevcut bir repoya doğrudan bir Pull Request gönder.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Statik dosyalarını <code>public/</code> altına koy.</strong>
+            <p>Build adımı zorunlu değil; düz HTML/CSS/JS yeterli.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Firebase Hosting + CI kur.</strong>
+            <p><a href="https://github.com/collective-bucket/menu" target="_blank" rel="noopener">collective-bucket/menu</a> reposundaki <code>firebase.json</code>, <code>.firebaserc</code> ve <code>.github/workflows/</code> dosyalarını referans alarak kendi <code>cb-&lt;repo-adı&gt;</code> hosting site'ını ve target'ını oluştur. Adım adım komutlar için <a href="CONTRIBUTING.md">CONTRIBUTING.md</a>'ye bak.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Merge et, otomatik yayınlansın.</strong>
+            <p><code>main</code>'e her push, GitHub Actions üzerinden otomatik deploy tetikler. Her PR için ayrı bir önizleme linki üretilir.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- HAKKINDA -->
+  <section id="hakkinda" class="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2>Hakkında</h2>
+      </div>
+      <p>
+        Küçük bir fikri ya da PoC'yi canlıya almaya çalışırken karşılaşılan asıl
+        zorluk genellikle kod değil; hangi bulut sağlayıcısının seçileceği, DNS
+        kaydının nereye gireceği, kredi kartı gerekip gerekmediği ve build
+        hatalarının nasıl çözüleceğidir.
+      </p>
+      <p>
+        Collective Bucket bu kısmı sabit bir şablona indirger: tek bir Firebase
+        projesi (<code>collective-bucket-apps</code>), her repo için ayrı bir
+        Hosting site'ı ve GitHub Actions ile otomatik deploy. Yeni bir demo
+        eklemek, var olan bir repoyu kopyalayıp isimleri değiştirmekten ibarettir.
+      </p>
+      <div class="about-facts">
+        <div class="fact">
+          <div class="k">maliyet</div>
+          <div class="v">Firebase Hosting Spark ve GitHub Free katmanları; kredi kartı gerekmez.</div>
+        </div>
+        <div class="fact">
+          <div class="k">lisans</div>
+          <div class="v">MIT — tüm repolar açık kaynak.</div>
+        </div>
+        <div class="fact">
+          <div class="k">kapsam</div>
+          <div class="v">Statik, istemci taraflı PoC'ler. Backend/veritabanı gerektiren fikirler kapsam dışı.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-brand">
+      <img src="assets/logo.svg" alt="" />
+      <span>Collective Bucket</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/collective-bucket" target="_blank" rel="noopener">GitHub</a>
+      <a href="CONTRIBUTING.md">Katkı Rehberi</a>
+      <span>MIT Lisansı</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/repos.js"></script>
+
+</body>
+</html>

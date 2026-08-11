@@ -1,0 +1,13 @@
+{
+  "name": "collective-bucket-main",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Collective Bucket — anasayfa ve repo dizini (Firebase Hosting).",
+  "scripts": {
+    "serve": "npx firebase-tools emulators:start --only hosting",
+    "deploy": "npx firebase-tools deploy --only hosting:main"
+  },
+  "devDependencies": {
+    "firebase-tools": "^15.26.0"
+  }
+}
