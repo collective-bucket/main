@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "collective-bucket-apps"
+    "default": "collective-bucket"
   },
   "targets": {
-    "collective-bucket-apps": {
+    "collective-bucket": {
       "hosting": {
         "main": [
-          "cb-main"
+          "collective-bucket-main"
         ]
       }
     }
