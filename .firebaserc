@@ -6,7 +6,7 @@
     "collective-bucket": {
       "hosting": {
         "main": [
-          "collective-bucket-main"
+          "cbucket-main"
         ]
       }
     }
