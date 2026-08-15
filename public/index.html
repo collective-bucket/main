@@ -126,14 +126,21 @@
       </p>
       <p>
         Collective Bucket bu kısmı sabit bir şablona indirger: tek bir Firebase
-        projesi (<code>collective-bucket</code>), her repo için ayrı bir
-        Hosting site'ı ve GitHub Actions ile otomatik deploy. Yeni bir demo
-        eklemek, var olan bir repoyu kopyalayıp isimleri değiştirmekten ibarettir.
+        projesi (<code>collective-bucket</code>), Spark (ücretsiz) katmandaki
+        araçlar, her repo için ayrı bir Hosting site'ı ve GitHub Actions ile
+        otomatik deploy. Yeni bir demo eklemek, var olan bir repoyu kopyalayıp
+        isimleri değiştirmekten ibarettir.
+      </p>
+      <p>
+        Ortak ihtiyaçlar için kendi geliştirdiğimiz paylaşılan araçlar da
+        sunulur; örneğin merkezi oturum yönetimi
+        (<a href="https://auth.collectivebucket.com">auth.collectivebucket.com</a>).
+        Böylece her PoC'nin kimlik doğrulamayı yeniden kurması gerekmez.
       </p>
       <div class="about-facts">
         <div class="fact">
           <div class="k">maliyet</div>
-          <div class="v">Firebase Hosting Spark ve GitHub Free katmanları; kredi kartı gerekmez.</div>
+          <div class="v">Firebase Spark ve GitHub Free; kredi kartı gerekmez.</div>
         </div>
         <div class="fact">
           <div class="k">lisans</div>
@@ -141,7 +148,7 @@
         </div>
         <div class="fact">
           <div class="k">kapsam</div>
-          <div class="v">Statik, istemci taraflı PoC'ler. Backend/veritabanı gerektiren fikirler kapsam dışı.</div>
+          <div class="v">Firebase ücretsiz araçları + Collective Bucket'ın hazır ortak araçları (auth vb.).</div>
         </div>
       </div>
     </div>

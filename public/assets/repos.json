@@ -4,7 +4,7 @@
     "description": "Anasayfa ve repo dizini. Bu site.",
     "url": "https://github.com/collective-bucket/main",
     "language": "HTML",
-    "visibility": "private",
+    "visibility": "public",
     "live": null
   },
   {

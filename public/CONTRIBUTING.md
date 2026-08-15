@@ -107,6 +107,11 @@ kaynaklarda gerçek erişim kontrolü mutlaka Firebase Security Rules ile
 
 ## Kapsam
 
-- Statik, istemci taraflı PoC'ler için uygundur.
-- Backend, veritabanı veya ücretli üçüncü parti servis gerektiren fikirler bu
-  yapının kapsamı dışındadır.
+- PoC'ler Firebase Spark (ücretsiz) katmanındaki araçlarla sınırlıdır:
+  Hosting, Authentication, Firestore, Cloud Functions ücretsiz kotası vb.
+- Ücretli üçüncü parti servisler veya Firebase ücretli (Blaze) katmanı gerektiren
+  fikirler bu yapının kapsamı dışındadır.
+- Ortak ihtiyaçlar için Collective Bucket'ın kendi geliştirdiği hazır araçlar
+  kullanılır; örneğin merkezi oturum için
+  [collective-bucket/auth](https://github.com/collective-bucket/auth)
+  (`auth.collectivebucket.com`).
