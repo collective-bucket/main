@@ -22,5 +22,13 @@
     "language": "JavaScript",
     "visibility": "public",
     "live": "https://auth.collectivebucket.com"
+  },
+  {
+    "name": "pano",
+    "description": "QR ile paylaşılabilir, şablonlu ilan panosu.",
+    "url": "https://github.com/collective-bucket/pano",
+    "language": "JavaScript",
+    "visibility": "public",
+    "live": "https://pano.collectivebucket.com"
   }
 ]
