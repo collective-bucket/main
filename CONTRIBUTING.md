@@ -82,6 +82,29 @@ kayıtlarını DNS panelinde ekleyip doğrula.
 Bu repodaki [public/assets/repos.json](public/assets/repos.json) dosyasına
 yeni reponu ekleyen bir PR gönder, böylece anasayfada listelenir.
 
+## Ortak oturum yönetimi
+
+Collective Bucket projeleri merkezi giriş için
+[collective-bucket/auth](https://github.com/collective-bucket/auth) reposunu ve
+`auth.collectivebucket.com` adresini kullanır. Nav alanına boş bir oturum
+konteyneri ve merkezi istemci scriptini eklemek yeterlidir:
+
+```html
+<div data-cb-auth></div>
+<script src="https://auth.collectivebucket.com/client.js" defer></script>
+```
+
+Oturuma programatik erişim:
+
+```js
+const session = await window.CollectiveBucketAuth.getSession();
+```
+
+Kalıcı Firebase oturumu yalnızca auth origin'inde tutulur. Tüketici uygulama
+kısa ömürlü ID token'ı bellekte alır; refresh token paylaşılmaz. Firestore gibi
+kaynaklarda gerçek erişim kontrolü mutlaka Firebase Security Rules ile
+`request.auth.uid` üzerinden yapılmalıdır.
+
 ## Kapsam
 
 - Statik, istemci taraflı PoC'ler için uygundur.

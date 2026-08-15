@@ -14,5 +14,13 @@
     "language": "JavaScript",
     "visibility": "public",
     "live": "https://menu.collectivebucket.com"
+  },
+  {
+    "name": "auth",
+    "description": "Collective Bucket projeleri için merkezi kimlik doğrulama ve tek oturum servisi.",
+    "url": "https://github.com/collective-bucket/auth",
+    "language": "JavaScript",
+    "visibility": "public",
+    "live": "https://auth.collectivebucket.com"
   }
 ]
