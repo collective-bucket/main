@@ -8,14 +8,15 @@ hâlidir.
 
 ## Mimari
 
-- **Tek bir Firebase projesi**: `collective-bucket-apps`. Her repo, bu proje
+- **Tek bir Firebase projesi**: `collective-bucket`. Her repo, bu proje
   altında ayrı bir Hosting **site**'ı olarak yayınlanır (ayrı proje açmak
   yerine).
-- **Her repo kendi site'ına ve target'ına sahiptir**: örnek `main` → `cb-main`,
-  `menu` → `cb-menu`. Yeni repo için isim deseni `cb-<repo-adı>`.
-- **Her site bir subdomain'e bağlanır**: `cb-menu` → `menu.collectivebucket.com`.
-  (Bu repo — `main` — istisna olarak kök alan adına, `collectivebucket.com`
-  apex'ine bağlanır.)
+- **Her repo kendi site'ına ve target'ına sahiptir**: örnek `main` →
+  `cbucket-main`, `menu` → `cbucket-menu`. Yeni repo için isim deseni
+  `cbucket-<repo-adı>`.
+- **Her site bir subdomain'e bağlanır**: `cbucket-menu` →
+  `menu.collectivebucket.com`. (Bu repo — `main` — istisna olarak kök alan
+  adına, `collectivebucket.com` apex'ine bağlanır.)
 - **CI/CD**: GitHub Actions, `FIREBASE_TOKEN` secret'ı ile `firebase-tools
   deploy` çalıştırır (servis hesabı key'i değil — org policy buna izin
   vermiyor). `main`'e her push canlıya deploy eder, her PR ayrı bir önizleme
@@ -39,8 +40,8 @@ Bu repodaki (`main`) veya `menu` reposundaki şu dosyaları kopyalayıp isimleri
 değiştir:
 
 - `firebase.json` — `"target"` alanını repo adınla değiştir.
-- `.firebaserc` — `targets.collective-bucket-apps.hosting` altına
-  `"<repo-adı>": ["cb-<repo-adı>"]` ekle.
+- `.firebaserc` — `targets.collective-bucket.hosting` altına
+  `"<repo-adı>": ["cbucket-<repo-adı>"]` ekle.
 - `package.json` — `scripts.deploy`'daki `--only hosting:<repo-adı>` kısmını
   güncelle.
 - `.github/workflows/firebase-hosting-merge.yml` ve
@@ -53,9 +54,9 @@ değiştir:
 npx firebase-tools login
 # admin@collectivebucket.com hesabıyla giriş yap
 
-npx firebase-tools use collective-bucket-apps
-npx firebase-tools hosting:sites:create cb-<repo-adı>
-npx firebase-tools target:apply hosting <repo-adı> cb-<repo-adı>
+npx firebase-tools use collective-bucket
+npx firebase-tools hosting:sites:create cbucket-<repo-adı>
+npx firebase-tools target:apply hosting <repo-adı> cbucket-<repo-adı>
 ```
 
 ### 5. `FIREBASE_TOKEN` secret'ı
@@ -72,7 +73,7 @@ gh secret set FIREBASE_TOKEN --repo collective-bucket/<repo-adı> --body "BURAYA
 
 ### 6. Custom domain (opsiyonel)
 
-Firebase Console → proje `collective-bucket-apps` → Hosting → ilgili site →
+Firebase Console → proje `collective-bucket` → Hosting → ilgili site →
 **Add custom domain** → `<repo-adı>.collectivebucket.com`. Verilen TXT/A
 kayıtlarını DNS panelinde ekleyip doğrula.
 

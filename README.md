@@ -15,7 +15,7 @@ adresinde Firebase Hosting üzerinden yayınlanır.
 │       ├── logo.svg / favicon.svg  # Logomark
 │       ├── repos.json              # collective-bucket altındaki repoların listesi
 │       └── repos.js                # repos.json'u okuyup Repolar bölümünü oluşturan script
-├── firebase.json, .firebaserc     # Firebase Hosting yapılandırması (target: main, site: cb-main)
+├── firebase.json, .firebaserc     # Firebase Hosting yapılandırması (target: main, site: cbucket-main)
 ├── package.json                   # firebase-tools bağımlılığı + serve/deploy script'leri
 ├── .github/workflows/             # main'e push'ta otomatik deploy, PR'larda önizleme linki
 └── CONTRIBUTING.md                # Yeni repo/PoC ekleme rehberi
@@ -64,7 +64,7 @@ platformlar için hazır export'lar bulunur:
 
 Bu repo, [collective-bucket/menu](https://github.com/collective-bucket/menu)
 reposuyla aynı Firebase Hosting + GitHub Actions desenini kullanır (tek proje:
-`collective-bucket-apps`, bu repo için site: `cb-main`, custom domain:
+`collective-bucket`, bu repo için site: `cbucket-main`, custom domain:
 `collectivebucket.com` apex). `main`'e her push otomatik deploy tetikler.
 
 Yeni bir repo/PoC eklemek istersen [CONTRIBUTING.md](CONTRIBUTING.md)'ye bak.
