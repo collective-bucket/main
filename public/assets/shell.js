@@ -30,21 +30,27 @@
   function renderHeader(placeholder) {
     var extraNav = placeholder.querySelector("[data-cb-shell-nav]");
     var extraCta = placeholder.querySelector("[data-cb-shell-cta]");
+    var appName =
+      placeholder.getAttribute("data-cb-shell-app") || "Collective Bucket";
+    var homeHref = placeholder.getAttribute("data-cb-shell-home") || HOME;
     var header = document.createElement("header");
     header.className = "cb-shell-header";
     header.innerHTML =
       '<div class="wrap">' +
       '<a class="cb-shell-brand" href="' +
-      HOME +
+      escapeHtml(homeHref) +
       '">' +
       '<img src="' +
       escapeHtml(LOGO) +
       '" alt="" />' +
-      "<span>Collective Bucket</span></a>" +
+      "<span>" +
+      escapeHtml(appName) +
+      "</span></a>" +
       '<nav class="cb-shell-nav" data-cb-shell-nav-slot></nav>' +
       '<div class="cb-shell-cta">' +
       '<div data-cb-shell-cta-slot></div>' +
-      '<div class="cb-auth-controls" data-cb-auth></div>' +
+      '<div class="cb-auth-controls cb-shell-auth" data-cb-auth></div>' +
+      '<button class="cb-shell-auth-toggle" type="button" aria-expanded="false" aria-label="Üye Girişi menüsünü aç">Üye Girişi</button>' +
       "</div></div>";
 
     var navSlot = header.querySelector("[data-cb-shell-nav-slot]");
@@ -58,6 +64,36 @@
     if (!ctaSlot.childElementCount) ctaSlot.remove();
 
     placeholder.replaceWith(header);
+  }
+
+  function bindMobileAuthToggle(header) {
+    var toggle = header.querySelector(".cb-shell-auth-toggle");
+    if (!toggle) return;
+
+    function isOpen() {
+      return header.classList.contains("cb-auth-open");
+    }
+
+    function setOpen(next) {
+      header.classList.toggle("cb-auth-open", next);
+      toggle.setAttribute("aria-expanded", String(!!next));
+    }
+
+    toggle.addEventListener("click", function (event) {
+      event.preventDefault();
+      setOpen(!isOpen());
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!isOpen()) return;
+      if (header.contains(event.target)) return;
+      setOpen(false);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape") return;
+      setOpen(false);
+    });
   }
 
   function appItems(apps) {
@@ -143,6 +179,13 @@
   }
 
   document.querySelectorAll('[data-cb-shell="header"]').forEach(renderHeader);
+
+  // Headers render/replaced above, bind after injection.
+  document
+    .querySelectorAll(".cb-shell-header")
+    .forEach(function (header) {
+      bindMobileAuthToggle(header);
+    });
 
   loadApps().then(function (apps) {
     document.querySelectorAll('[data-cb-shell="footer"]').forEach(function (el) {
