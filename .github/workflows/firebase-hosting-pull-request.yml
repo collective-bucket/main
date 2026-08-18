@@ -21,23 +21,15 @@ jobs:
         with:
           project_id: collective-bucket
           workload_identity_provider: projects/239510573325/locations/global/workloadIdentityPools/github-actions/providers/github-provider
-      - run: python3 -m pip install --user google-auth requests
-      - id: access-token
-        run: |
-          python3 <<'PY' >> "$GITHUB_OUTPUT"
-          import google.auth
-          from google.auth.transport.requests import Request
-          creds, _ = google.auth.default(scopes=["https://www.googleapis.com/auth/cloud-platform"])
-          creds.refresh(Request())
-          print(f"token={creds.token}")
-          PY
+          service_account: github-actions-deployer@collective-bucket.iam.gserviceaccount.com
+          token_format: access_token
       - run: npm ci
       - name: Deploy preview channel
         id: deploy
         run: |
           npx firebase-tools hosting:channel:deploy "pr-${{ github.event.number }}" \
             --only hosting:main \
-            --token "${{ steps.access-token.outputs.token }}" \
+            --token "${{ steps.auth.outputs.access_token }}" \
             --non-interactive \
             | tee deploy-output.txt
           URL=$(grep -oE 'https://[a-zA-Z0-9.-]+\.web\.app[^ ]*' deploy-output.txt | tail -1)
