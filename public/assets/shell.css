@@ -122,6 +122,18 @@
   font: 600 14px/1 var(--cb-font);
   cursor: pointer;
   white-space: nowrap;
+  gap: 8px;
+}
+
+.cb-shell-auth-icon {
+  display: block;
+  flex: 0 0 auto;
+  color: var(--cb-text);
+  fill: currentColor;
+}
+
+.cb-shell-auth-toggle-label {
+  display: inline;
 }
 
 .cb-shell-cta .btn,
@@ -286,6 +298,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .cb-shell-auth-toggle-label {
+    display: none;
   }
 
   .cb-shell-auth {

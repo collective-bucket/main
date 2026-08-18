@@ -50,7 +50,12 @@
       '<div class="cb-shell-cta">' +
       '<div data-cb-shell-cta-slot></div>' +
       '<div class="cb-shell-auth"><div class="cb-auth-controls" data-cb-auth></div></div>' +
-      '<button class="cb-shell-auth-toggle" type="button" aria-expanded="false" aria-label="Üye menüsünü aç">Üye Girişi</button>' +
+      '<button class="cb-shell-auth-toggle" type="button" aria-expanded="false" aria-label="Üye menüsünü aç">' +
+      '<svg class="cb-shell-auth-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">' +
+      '<path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.866 0-7 2.239-7 5v1h14v-1c0-2.761-3.134-5-7-5z"/>' +
+      '</svg>' +
+      '<span class="cb-shell-auth-toggle-label">Üye Girişi</span>' +
+      '</button>' +
       "</div></div>";
 
     var navSlot = header.querySelector("[data-cb-shell-nav-slot]");
@@ -80,17 +85,25 @@
       toggle.setAttribute("aria-expanded", String(!!next));
     }
 
-    // Sync toggle label with whatever auth client renders (email or "Üye Girişi").
+    // Auth client e-mail veya giriş/çıkış durumunu içeride dolduruyor.
+    // Kullanıcı adını (e-mailin sol kısmı) toggle üzerinde göstermiyoruz;
+    // bunun yerine sadece profil ikonu kullanıyoruz.
     function syncToggleLabel() {
       if (!authWrap) return;
       var emailEl = authWrap.querySelector(".cb-auth-email");
       var signInBtn = authWrap.querySelector("a, button");
+      var signedIn =
+        !!(emailEl && emailEl.textContent && emailEl.textContent.trim());
+      var labelSpan = toggle.querySelector(".cb-shell-auth-toggle-label");
       if (emailEl && emailEl.textContent.trim()) {
-        toggle.textContent = emailEl.textContent.trim().split("@")[0];
+        toggle.setAttribute("aria-label", "Profil menüsünü aç");
+        if (labelSpan) labelSpan.textContent = "Profil";
       } else if (signInBtn && signInBtn.textContent.trim()) {
-        toggle.textContent = signInBtn.textContent.trim();
+        toggle.setAttribute("aria-label", "Üye menüsünü aç");
+        if (labelSpan) labelSpan.textContent = "Üye Girişi";
       } else {
-        toggle.textContent = "Üye Girişi";
+        toggle.setAttribute("aria-label", "Üye menüsünü aç");
+        if (labelSpan) labelSpan.textContent = "Üye Girişi";
       }
     }
 
