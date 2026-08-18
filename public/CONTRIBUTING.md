@@ -77,10 +77,27 @@ Firebase Console → proje `collective-bucket` → Hosting → ilgili site →
 **Add custom domain** → `<repo-adı>.collectivebucket.com`. Verilen TXT/A
 kayıtlarını DNS panelinde ekleyip doğrula.
 
-### 7. `repos.json`'a ekle
+### 7. `repos.json` ve `apps.json`'a ekle
 
-Bu repodaki [public/assets/repos.json](public/assets/repos.json) dosyasına
-yeni reponu ekleyen bir PR gönder, böylece anasayfada listelenir.
+Bu repodaki [public/assets/repos.json](assets/repos.json) dosyasına yeni reponu
+ekleyen bir PR gönder, böylece anasayfada listelenir. Canlı bir uygulama ise
+footer menüsü için [public/assets/apps.json](assets/apps.json) kaydı da gerekir.
+
+### 8. Ortak shell
+
+Header ve footer [tasarım kılavuzu](DESIGN.md)ndaki `shell.js` / `shell.css`
+ile eklenir. Uygulama adı header’da yazılmaz; logo ana siteye gider.
+
+```html
+<link rel="stylesheet" href="https://collectivebucket.com/assets/shell.css" />
+<header data-cb-shell="header"></header>
+<footer data-cb-shell="footer"></footer>
+<script src="https://collectivebucket.com/assets/shell.js" defer></script>
+<script src="https://auth.collectivebucket.com/client.js" defer></script>
+```
+
+Korumalı sayfalar auth’a otomatik yönlenmez; ziyaretçi **Üye Girişi** veya
+**Giriş yap** ile gider.
 
 ## Ortak oturum yönetimi
 

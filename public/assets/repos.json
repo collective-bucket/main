@@ -38,5 +38,13 @@
     "language": "JavaScript",
     "visibility": "public",
     "live": "https://payback.collectivebucket.com"
+  },
+  {
+    "name": "budget",
+    "description": "Gelir, harcama ve birikim hedeflerini takip eden kişisel bütçe.",
+    "url": "https://github.com/collective-bucket/budget",
+    "language": "JavaScript",
+    "visibility": "public",
+    "live": "https://budget.collectivebucket.com"
   }
 ]

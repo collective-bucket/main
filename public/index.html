@@ -17,24 +17,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/styles.css" />
+<link rel="stylesheet" href="assets/shell.css" />
 </head>
 <body>
 
-<header class="nav">
-  <div class="wrap">
-    <a href="#top" class="brand">
-      <img src="assets/logo.svg" alt="Collective Bucket logosu" />
-      <span>Collective Bucket</span>
-    </a>
-    <nav class="nav-links">
-      <a href="#repolar">Repolar</a>
-      <a href="#yeni-olustur">Yeni Oluştur</a>
-      <a href="#hakkinda">Hakkında</a>
-    </nav>
-    <div class="nav-cta">
-      <a class="btn btn-ghost" href="https://github.com/collective-bucket" target="_blank" rel="noopener">GitHub</a>
-      <div class="cb-auth-controls" data-cb-auth></div>
-    </div>
+<header data-cb-shell="header">
+  <nav data-cb-shell-nav>
+    <a href="#repolar">Repolar</a>
+    <a href="#yeni-olustur">Yeni Oluştur</a>
+    <a href="#hakkinda">Hakkında</a>
+  </nav>
+  <div data-cb-shell-cta>
+    <a class="btn btn-ghost" href="https://github.com/collective-bucket" target="_blank" rel="noopener">GitHub</a>
   </div>
 </header>
 
@@ -156,21 +150,10 @@
 
 </main>
 
-<footer>
-  <div class="wrap">
-    <div class="footer-brand">
-      <img src="assets/logo.svg" alt="" />
-      <span>Collective Bucket</span>
-    </div>
-    <div class="footer-links">
-      <a href="https://github.com/collective-bucket" target="_blank" rel="noopener">GitHub</a>
-      <a href="CONTRIBUTING.md">Katkı Rehberi</a>
-      <span>MIT Lisansı</span>
-    </div>
-  </div>
-</footer>
+<footer data-cb-shell="footer"></footer>
 
 <script src="assets/repos.js"></script>
+<script src="assets/shell.js" defer></script>
 <script src="https://auth.collectivebucket.com/client.js" defer></script>
 
 </body>
