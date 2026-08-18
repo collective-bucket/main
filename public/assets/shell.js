@@ -49,8 +49,8 @@
       '<nav class="cb-shell-nav" data-cb-shell-nav-slot></nav>' +
       '<div class="cb-shell-cta">' +
       '<div data-cb-shell-cta-slot></div>' +
-      '<div class="cb-auth-controls cb-shell-auth" data-cb-auth></div>' +
-      '<button class="cb-shell-auth-toggle" type="button" aria-expanded="false" aria-label="Üye Girişi menüsünü aç">Üye Girişi</button>' +
+      '<div class="cb-shell-auth"><div class="cb-auth-controls" data-cb-auth></div></div>' +
+      '<button class="cb-shell-auth-toggle" type="button" aria-expanded="false" aria-label="Üye menüsünü aç">Üye Girişi</button>' +
       "</div></div>";
 
     var navSlot = header.querySelector("[data-cb-shell-nav-slot]");
@@ -68,6 +68,7 @@
 
   function bindMobileAuthToggle(header) {
     var toggle = header.querySelector(".cb-shell-auth-toggle");
+    var authWrap = header.querySelector(".cb-shell-auth");
     if (!toggle) return;
 
     function isOpen() {
@@ -77,6 +78,28 @@
     function setOpen(next) {
       header.classList.toggle("cb-auth-open", next);
       toggle.setAttribute("aria-expanded", String(!!next));
+    }
+
+    // Sync toggle label with whatever auth client renders (email or "Üye Girişi").
+    function syncToggleLabel() {
+      if (!authWrap) return;
+      var emailEl = authWrap.querySelector(".cb-auth-email");
+      var signInBtn = authWrap.querySelector("a, button");
+      if (emailEl && emailEl.textContent.trim()) {
+        toggle.textContent = emailEl.textContent.trim().split("@")[0];
+      } else if (signInBtn && signInBtn.textContent.trim()) {
+        toggle.textContent = signInBtn.textContent.trim();
+      } else {
+        toggle.textContent = "Üye Girişi";
+      }
+    }
+
+    if (authWrap && window.MutationObserver) {
+      new MutationObserver(syncToggleLabel).observe(authWrap, {
+        childList: true,
+        subtree: true,
+        characterData: true,
+      });
     }
 
     toggle.addEventListener("click", function (event) {
