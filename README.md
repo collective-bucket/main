@@ -1,14 +1,14 @@
 # Collective Bucket
 
-Küçük fikirleri ve PoC’leri hızlıca canlıya almak için açık kaynak statik
-uygulama koleksiyonu. [collectivebucket.com](https://collectivebucket.com)
+Küçük fikirleri ve deneme projelerini hızlıca yayına almak için açık kaynak statik
+uygulamalardan oluşan bir koleksiyon. [collectivebucket.com](https://collectivebucket.com)
 adresinde yayınlanır.
 
 ## Nedir?
 
-Collective Bucket, bir fikri denemek için altyapı kurulumunu tekrar tekrar
-yapmayı gerektirmeyen bir şablon sunar. Her uygulama kendi repoda yaşar; ortak
-giriş, deploy ve görsel dil paylaşılır.
+Collective Bucket, yeni bir fikri denemek için altyapıyı her seferinde yeniden
+kurmanızı gerektirmeyen bir başlangıç şablonu sunar. Hosting, kimlik doğrulama
+ve arayüz ihtiyaçları tek yerde toplanır; her uygulama kendi reposunda yaşar.
 
 ## Amaç
 
