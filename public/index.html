@@ -24,7 +24,7 @@
 <header data-cb-shell="header" data-cb-shell-app="Ana Sayfa" data-cb-shell-home="/">
   <nav data-cb-shell-nav>
     <a href="#repolar">Repolar</a>
-    <a href="#yeni-olustur">Yeni Oluştur</a>
+    <a href="#katki">Katkı</a>
     <a href="#hakkinda">Hakkında</a>
   </nav>
   <div data-cb-shell-cta>
@@ -40,7 +40,7 @@
       <h1>Collective Bucket</h1>
       <p class="lead">
         Küçük fikirleri ve PoC'leri hızlıca canlıya almak için açık kaynak statik
-        uygulama koleksiyonu. Her uygulama kendi adresinde yayınlanır; ortak giriş,
+        uygulama koleksiyonu. Her uygulama kendi repoda yaşar; ortak giriş,
         deploy ve görsel dil paylaşılır.
       </p>
       <div class="hero-meta">
@@ -57,7 +57,7 @@
       <div class="section-head">
         <span class="section-num">01</span>
         <h2>Repolar</h2>
-        <p><code>collective-bucket</code> organizasyonundaki tüm repolar. Liste <code>assets/repos.json</code>'dan okunur, yeni bir repo eklendiğinde buraya bir kayıt eklemek yeterlidir.</p>
+        <p>Collective Bucket altındaki açık kaynak repolar ve canlı demolar.</p>
       </div>
       <div class="repo-grid" id="repo-list">
         <p class="repo-error">Yükleniyor…</p>
@@ -65,37 +65,31 @@
     </div>
   </section>
 
-  <!-- YENİ OLUŞTUR -->
-  <section id="yeni-olustur">
+  <!-- KATKI -->
+  <section id="katki">
     <div class="wrap">
       <div class="section-head">
         <span class="section-num">02</span>
-        <h2>Yeni Oluştur</h2>
-        <p>Yeni bir PoC eklemek ya da mevcut bir repoya katkı sağlamak için:</p>
+        <h2>Katkı</h2>
+        <p>Yeni bir fikir denemek ya da mevcut bir repoya katkı sağlamak için:</p>
       </div>
       <ol class="steps">
         <li>
           <div>
-            <strong>Repo aç ya da PR at.</strong>
-            <p><a href="https://github.com/organizations/collective-bucket/repositories/new" target="_blank" rel="noopener">collective-bucket</a> organizasyonunda yeni bir repo oluştur, ya da mevcut bir repoya doğrudan bir Pull Request gönder.</p>
+            <strong>Repo aç veya PR gönder.</strong>
+            <p>GitHub organizasyonunda yeni bir repo oluşturun ya da mevcut bir repoya katkı gönderin.</p>
           </div>
         </li>
         <li>
           <div>
-            <strong>Statik dosyalarını <code>public/</code> altına koy.</strong>
-            <p>Build adımı zorunlu değil; düz HTML/CSS/JS yeterli.</p>
+            <strong>Statik dosyalarını hazırla.</strong>
+            <p>HTML, CSS ve JS dosyalarını public klasörüne koyun; build adımı zorunlu değildir.</p>
           </div>
         </li>
         <li>
           <div>
-            <strong>Firebase Hosting + CI kur.</strong>
-            <p><a href="https://github.com/collective-bucket/menu" target="_blank" rel="noopener">collective-bucket/menu</a> reposundaki <code>firebase.json</code>, <code>.firebaserc</code> ve <code>.github/workflows/</code> dosyalarını referans alarak kendi <code>cb-&lt;repo-adı&gt;</code> hosting site'ını ve target'ını oluştur. Adım adım komutlar için <a href="CONTRIBUTING.md">CONTRIBUTING.md</a>'ye bak.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <strong>Merge et, otomatik yayınlansın.</strong>
-            <p><code>main</code>'e her push, GitHub Actions üzerinden otomatik deploy tetikler. Her PR için ayrı bir önizleme linki üretilir.</p>
+            <strong>Yayınla.</strong>
+            <p>Adım adım kurulum için <a href="CONTRIBUTING.md">Katkı Rehberi</a>'ne bakın. Merge sonrası site otomatik yayınlanır.</p>
           </div>
         </li>
       </ol>
@@ -109,25 +103,18 @@
         <span class="section-num">03</span>
         <h2>Hakkında</h2>
       </div>
+      <p><strong>Nedir?</strong></p>
       <p>
-        Collective Bucket, bir fikri denemek için altyapı kurulumunu tekrar
-        tekrar yapmayı gerektirmeyen bir şablon sunar. Hosting, CI, kimlik
-        doğrulama ve görsel dil ortak kalır; her uygulama kendi repoda yaşar.
+        Collective Bucket, bir fikri denemek için altyapı kurulumunu tekrar tekrar
+        yapmayı gerektirmeyen bir şablon sunar. Her uygulama kendi repoda yaşar;
+        ortak giriş, deploy ve görsel dil paylaşılır.
       </p>
-      <p>
-        Teknik tercih: tek Firebase projesi, statik <code>public/</code> dosyaları,
-        GitHub Actions ile otomatik deploy. Veri gereken uygulamalarda Firestore
-        ve Security Rules. Tasarımda açık tema, pastel mint vurgu ve paylaşılan
-        shell bileşenleri kullanılır.
-      </p>
-      <p>
-        Ortak giriş <a href="https://auth.collectivebucket.com">auth.collectivebucket.com</a>
-        üzerinden sağlanır; her PoC'nin kimlik doğrulamayı yeniden kurması gerekmez.
-      </p>
+
+      <p><strong>Amaç</strong></p>
       <div class="about-facts">
         <div class="fact">
           <div class="k">maliyet</div>
-          <div class="v">Firebase Spark ve GitHub Free; kredi kartı gerekmez.</div>
+          <div class="v">Ücretsiz katmanla başla; kredi kartı gerekmez.</div>
         </div>
         <div class="fact">
           <div class="k">lisans</div>
@@ -135,9 +122,24 @@
         </div>
         <div class="fact">
           <div class="k">kapsam</div>
-          <div class="v">Firebase ücretsiz araçları + Collective Bucket'ın hazır ortak araçları (auth vb.).</div>
+          <div class="v">Statik yayın, ortak giriş ve paylaşılan arayüz bileşenleri.</div>
         </div>
       </div>
+
+      <p><strong>Teknik tercihler</strong></p>
+      <ul>
+        <li>Tek Firebase projesi, her repo ayrı hosting sitesi</li>
+        <li>Statik dosyalar ve otomatik deploy</li>
+        <li>Veri gereken uygulamalarda Firestore ve güvenlik kuralları</li>
+        <li>Merkezi oturum: <a href="https://auth.collectivebucket.com">auth.collectivebucket.com</a></li>
+      </ul>
+
+      <p><strong>Tasarım tercihleri</strong></p>
+      <ul>
+        <li>Açık tema, pastel mint vurgu</li>
+        <li>Inter ve JetBrains Mono tipografisi</li>
+        <li>Paylaşılan shell bileşenleri</li>
+      </ul>
     </div>
   </section>
 

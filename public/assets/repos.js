@@ -42,8 +42,8 @@ async function renderRepos() {
 
   const newCard = `
     <article class="repo-card repo-card-new">
-      <p>Yeni bir PoC mi ekliyorsun?</p>
-      <a href="https://github.com/organizations/collective-bucket/repositories/new" target="_blank" rel="noopener">+ Yeni repo oluştur</a>
+      <p>Yeni bir fikir mi deniyorsun?</p>
+      <a href="https://github.com/organizations/collective-bucket/repositories/new" target="_blank" rel="noopener">+ Repo oluştur</a>
     </article>`;
 
   list.innerHTML = cards + newCard;
