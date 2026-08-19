@@ -1,7 +1,7 @@
 [
   {
     "name": "main",
-    "description": "Anasayfa ve repo dizini. Bu site.",
+    "description": "Collective Bucket anasayfası ve açık kaynak repo dizini.",
     "url": "https://github.com/collective-bucket/main",
     "language": "HTML",
     "visibility": "public",
@@ -9,7 +9,7 @@
   },
   {
     "name": "menu",
-    "description": "Kamera ile okutulunca menü sayfası açan, veritabanısız statik QR menü demosu.",
+    "description": "QR ile açılan, JSON tabanlı dijital menü demosu.",
     "url": "https://github.com/collective-bucket/menu",
     "language": "JavaScript",
     "visibility": "public",
@@ -17,7 +17,7 @@
   },
   {
     "name": "auth",
-    "description": "Collective Bucket projeleri için merkezi kimlik doğrulama ve tek oturum servisi.",
+    "description": "Collective Bucket uygulamaları için merkezi giriş ve tek oturum.",
     "url": "https://github.com/collective-bucket/auth",
     "language": "JavaScript",
     "visibility": "public",
@@ -25,7 +25,7 @@
   },
   {
     "name": "pano",
-    "description": "QR ile paylaşılabilir, şablonlu ilan panosu.",
+    "description": "QR ile paylaşılabilir ilan panosu.",
     "url": "https://github.com/collective-bucket/pano",
     "language": "JavaScript",
     "visibility": "public",
@@ -33,7 +33,7 @@
   },
   {
     "name": "payback",
-    "description": "Yolculuk harcamalarını kişiler arasında denkleştiren hesap paylaşımı.",
+    "description": "Yolculuk harcamalarını kişiler arasında denkleştir.",
     "url": "https://github.com/collective-bucket/payback",
     "language": "JavaScript",
     "visibility": "public",

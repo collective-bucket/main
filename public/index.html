@@ -4,12 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Collective Bucket</title>
-<meta name="description" content="collective-bucket GitHub organizasyonu altında barınan, Firebase Hosting + GitHub Actions ile otomatik yayınlanan statik PoC'lerin listesi." />
+<meta name="description" content="Küçük fikirleri ve PoC'leri hızlıca canlıya almak için açık kaynak statik uygulama koleksiyonu." />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico" />
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
 <meta property="og:title" content="Collective Bucket" />
-<meta property="og:description" content="collective-bucket GitHub organizasyonu altında barınan, Firebase Hosting + GitHub Actions ile otomatik yayınlanan statik PoC'lerin listesi." />
+<meta property="og:description" content="Küçük fikirleri ve PoC'leri hızlıca canlıya almak için açık kaynak statik uygulama koleksiyonu." />
 <meta property="og:image" content="assets/brand/social-preview.png" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -39,17 +39,14 @@
     <div class="wrap">
       <h1>Collective Bucket</h1>
       <p class="lead">
-        <code>collective-bucket</code> GitHub organizasyonu altında barınan, statik
-        PoC'lerden oluşan bir koleksiyon. Her repo kendi Firebase Hosting site'ına
-        ve GitHub Actions workflow'una sahiptir; <code>main</code>'e push/merge
-        sonrası otomatik olarak yayınlanır.
+        Küçük fikirleri ve PoC'leri hızlıca canlıya almak için açık kaynak statik
+        uygulama koleksiyonu. Her uygulama kendi adresinde yayınlanır; ortak giriş,
+        deploy ve görsel dil paylaşılır.
       </p>
       <div class="hero-meta">
         <span>organizasyon: <a href="https://github.com/collective-bucket" target="_blank" rel="noopener">github.com/collective-bucket</a></span>
         <span class="sep">·</span>
-        <span>yayın: Firebase Hosting (Spark / ücretsiz katman)</span>
-        <span class="sep">·</span>
-        <span>CI: GitHub Actions</span>
+        <span>lisans: MIT</span>
       </div>
     </div>
   </section>
@@ -113,23 +110,19 @@
         <h2>Hakkında</h2>
       </div>
       <p>
-        Küçük bir fikri ya da PoC'yi canlıya almaya çalışırken karşılaşılan asıl
-        zorluk genellikle kod değil; hangi bulut sağlayıcısının seçileceği, DNS
-        kaydının nereye gireceği, kredi kartı gerekip gerekmediği ve build
-        hatalarının nasıl çözüleceğidir.
+        Collective Bucket, bir fikri denemek için altyapı kurulumunu tekrar
+        tekrar yapmayı gerektirmeyen bir şablon sunar. Hosting, CI, kimlik
+        doğrulama ve görsel dil ortak kalır; her uygulama kendi repoda yaşar.
       </p>
       <p>
-        Collective Bucket bu kısmı sabit bir şablona indirger: tek bir Firebase
-        projesi (<code>collective-bucket</code>), Spark (ücretsiz) katmandaki
-        araçlar, her repo için ayrı bir Hosting site'ı ve GitHub Actions ile
-        otomatik deploy. Yeni bir demo eklemek, var olan bir repoyu kopyalayıp
-        isimleri değiştirmekten ibarettir.
+        Teknik tercih: tek Firebase projesi, statik <code>public/</code> dosyaları,
+        GitHub Actions ile otomatik deploy. Veri gereken uygulamalarda Firestore
+        ve Security Rules. Tasarımda açık tema, pastel mint vurgu ve paylaşılan
+        shell bileşenleri kullanılır.
       </p>
       <p>
-        Ortak ihtiyaçlar için kendi geliştirdiğimiz paylaşılan araçlar da
-        sunulur; örneğin merkezi oturum yönetimi
-        (<a href="https://auth.collectivebucket.com">auth.collectivebucket.com</a>).
-        Böylece her PoC'nin kimlik doğrulamayı yeniden kurması gerekmez.
+        Ortak giriş <a href="https://auth.collectivebucket.com">auth.collectivebucket.com</a>
+        üzerinden sağlanır; her PoC'nin kimlik doğrulamayı yeniden kurması gerekmez.
       </p>
       <div class="about-facts">
         <div class="fact">
