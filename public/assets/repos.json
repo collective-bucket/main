@@ -46,5 +46,13 @@
     "language": "JavaScript",
     "visibility": "public",
     "live": "https://budget.collectivebucket.com"
+  },
+  {
+    "name": "mindset",
+    "description": "Mindsetini bir numarayla paylaş. Açık okuma herkese, kapalı okuma yalnız sana.",
+    "url": "https://github.com/collective-bucket/mindset",
+    "language": "JavaScript",
+    "visibility": "public",
+    "live": "https://cbucket-mindset.web.app"
   }
 ]
