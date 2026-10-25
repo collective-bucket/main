@@ -24,6 +24,7 @@ jobs:
           service_account: github-actions-deployer@collective-bucket.iam.gserviceaccount.com
           token_format: access_token
       - run: npm ci
+      - run: npm test
       - name: Deploy preview channel
         id: deploy
         run: |

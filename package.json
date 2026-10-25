@@ -2,8 +2,9 @@
   "name": "collective-bucket-main",
   "version": "1.0.0",
   "private": true,
-  "description": "Collective Bucket — anasayfa ve repo dizini.",
+  "description": "Collective Bucket — home page and repo directory.",
   "scripts": {
+    "test": "node tests/i18n.test.js",
     "serve": "npx firebase-tools emulators:start --only hosting",
     "deploy": "npx firebase-tools deploy --only hosting:main"
   },

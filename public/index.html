@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Collective Bucket</title>
-<meta name="description" content="Küçük fikirleri ve deneme projelerini hızlıca yayına almak için açık kaynak statik uygulama koleksiyonu." />
+<meta name="description" content="An open-source collection of static apps for shipping small ideas and experiments fast." data-i18n-attr="content:meta.description" />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico" />
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
 <meta property="og:title" content="Collective Bucket" />
-<meta property="og:description" content="Küçük fikirleri ve deneme projelerini hızlıca yayına almak için açık kaynak statik uygulama koleksiyonu." />
+<meta property="og:description" content="An open-source collection of static apps for shipping small ideas and experiments fast." data-i18n-attr="content:meta.description" />
 <meta property="og:image" content="assets/brand/social-preview.png" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -21,11 +21,11 @@
 </head>
 <body>
 
-<header data-cb-shell="header" data-cb-shell-app="Ana Sayfa" data-cb-shell-home="/">
+<header data-cb-shell="header" data-cb-shell-app="Home" data-cb-shell-home="/" data-cb-shell-lang data-i18n-attr="data-cb-shell-app:meta.appName">
   <nav data-cb-shell-nav>
-    <a href="#repolar">Repolar</a>
-    <a href="#katki">Katkı</a>
-    <a href="#hakkinda">Hakkında</a>
+    <a href="#repos" data-i18n="nav.repos">Repos</a>
+    <a href="#contributing" data-i18n="nav.contributing">Contributing</a>
+    <a href="#about" data-i18n="nav.about">About</a>
   </nav>
   <div data-cb-shell-cta>
     <a class="btn btn-ghost" href="https://github.com/collective-bucket" target="_blank" rel="noopener">GitHub</a>
@@ -34,117 +34,117 @@
 
 <main id="top">
 
-  <!-- BAŞLIK + KISA AÇIKLAMA -->
+  <!-- TITLE + SHORT DESCRIPTION -->
   <section class="hero" style="border-top:none;">
     <div class="wrap">
       <h1>Collective Bucket</h1>
-      <p class="lead">
-        Küçük fikirleri ve deneme projelerini hızlıca yayına almak için hazırlanan,
-        açık kaynak statik uygulamalardan oluşan bir koleksiyon. Her uygulama kendi
-        reposunda geliştirilir; giriş, yayınlama ve görsel dil paylaşılır.
+      <p class="lead" data-i18n="hero.lead">
+        An open-source collection of static apps for shipping small ideas and
+        experiments fast. Each app lives in its own repo; sign-in, publishing
+        and the visual language are shared.
       </p>
       <div class="hero-meta">
-        <span>organizasyon: <a href="https://github.com/collective-bucket" target="_blank" rel="noopener">github.com/collective-bucket</a></span>
+        <span><span data-i18n="hero.org">organization:</span> <a href="https://github.com/collective-bucket" target="_blank" rel="noopener">github.com/collective-bucket</a></span>
         <span class="sep">·</span>
-        <span>lisans: MIT</span>
+        <span data-i18n="hero.license">license: MIT</span>
       </div>
     </div>
   </section>
 
-  <!-- REPOLAR -->
-  <section id="repolar">
+  <!-- REPOS -->
+  <section id="repos">
     <div class="wrap">
       <div class="section-head">
         <span class="section-num">01</span>
-        <h2>Repolar</h2>
-        <p>Collective Bucket altındaki açık kaynak repolar ve canlı demolar.</p>
+        <h2 data-i18n="repos.title">Repos</h2>
+        <p data-i18n="repos.lead">Open-source repos and live demos under Collective Bucket.</p>
       </div>
       <div class="repo-grid" id="repo-list">
-        <p class="repo-error">Yükleniyor…</p>
+        <p class="repo-error" data-i18n="repos.loading">Loading…</p>
       </div>
     </div>
   </section>
 
-  <!-- KATKI -->
-  <section id="katki">
+  <!-- CONTRIBUTING -->
+  <section id="contributing">
     <div class="wrap">
       <div class="section-head">
         <span class="section-num">02</span>
-        <h2>Katkı</h2>
-        <p>Yeni bir fikir denemek ya da mevcut bir repoya katkı sağlamak için:</p>
+        <h2 data-i18n="contrib.title">Contributing</h2>
+        <p data-i18n="contrib.lead">To try a new idea or contribute to an existing repo:</p>
       </div>
       <ol class="steps">
         <li>
           <div>
-            <strong>Repo aç veya PR gönder.</strong>
-            <p>GitHub organizasyonunda yeni bir repo oluşturun ya da mevcut bir repoya katkı gönderin.</p>
+            <strong data-i18n="contrib.step1Title">Open a repo or send a PR.</strong>
+            <p data-i18n="contrib.step1Body">Create a new repo in the GitHub organization or send a contribution to an existing one.</p>
           </div>
         </li>
         <li>
           <div>
-            <strong>Statik dosyalarını hazırla.</strong>
-            <p>HTML, CSS ve JS dosyalarını public klasörüne koyun; build adımı zorunlu değildir.</p>
+            <strong data-i18n="contrib.step2Title">Prepare your static files.</strong>
+            <p data-i18n="contrib.step2Body">Put your HTML, CSS and JS files in the public folder; a build step is optional.</p>
           </div>
         </li>
         <li>
           <div>
-            <strong>Yayınla.</strong>
-            <p>Adım adım kurulum için <a href="CONTRIBUTING.md">Katkı Rehberi</a>'ne bakın. Merge sonrası site otomatik yayınlanır.</p>
+            <strong data-i18n="contrib.step3Title">Publish.</strong>
+            <p data-i18n-html="contrib.step3Body">See the <a href="CONTRIBUTING.md">Contributing Guide</a> for step-by-step setup. The site deploys automatically after merge.</p>
           </div>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- HAKKINDA -->
-  <section id="hakkinda" class="about">
+  <!-- ABOUT -->
+  <section id="about" class="about">
     <div class="wrap">
       <div class="section-head">
         <span class="section-num">03</span>
-        <h2>Hakkında</h2>
+        <h2 data-i18n="about.title">About</h2>
       </div>
-      <p><strong>Nedir?</strong></p>
-      <p>
-        Collective Bucket, yeni bir fikri denemek için altyapıyı her seferinde yeniden
-        kurmanızı gerektirmeyen bir başlangıç şablonu sunar. Hosting, kimlik doğrulama
-        ve arayüz ihtiyaçları tek yerde toplanır; her uygulama kendi reposunda yaşar.
+      <p><strong data-i18n="about.whatTitle">What is it?</strong></p>
+      <p data-i18n="about.what1">
+        Collective Bucket offers a starter template so you don't have to rebuild
+        the infrastructure every time you try a new idea. Hosting, authentication
+        and UI needs live in one place; each app lives in its own repo.
       </p>
-      <p>
-        Bir yazılımcı için bu platform, yanında taşıdığı çakı gibidir: AI desteğiyle
-        dakikalar içinde bir fikri hayata geçirebilir. Bu kolaylık yalnızca bir kişiye
-        özgü olmamalı; bu yüzden platform tüm yazılımcılara açık tutulmuş ve adı
-        <em>Collective Bucket</em> olarak konulmuştur.
+      <p data-i18n-html="about.what2">
+        For a developer, this platform is like a pocket knife: with AI help, an
+        idea can come to life in minutes. That convenience shouldn't belong to one
+        person only, so the platform is open to every developer and is named
+        <em>Collective Bucket</em>.
       </p>
 
-      <p><strong>Amaç</strong></p>
+      <p><strong data-i18n="about.goalTitle">Goal</strong></p>
       <div class="about-facts">
         <div class="fact">
-          <div class="k">maliyet</div>
-          <div class="v">Ücretsiz katmanla başla; kredi kartı gerekmez.</div>
+          <div class="k" data-i18n="about.costKey">cost</div>
+          <div class="v" data-i18n="about.costValue">Start on the free tier; no credit card required.</div>
         </div>
         <div class="fact">
-          <div class="k">lisans</div>
-          <div class="v">MIT — tüm repolar açık kaynak.</div>
+          <div class="k" data-i18n="about.licenseKey">license</div>
+          <div class="v" data-i18n="about.licenseValue">MIT — every repo is open source.</div>
         </div>
         <div class="fact">
-          <div class="k">kapsam</div>
-          <div class="v">Statik yayın, ortak giriş ve paylaşılan arayüz bileşenleri.</div>
+          <div class="k" data-i18n="about.scopeKey">scope</div>
+          <div class="v" data-i18n="about.scopeValue">Static hosting, shared sign-in and shared UI components.</div>
         </div>
       </div>
 
-      <p><strong>Teknik tercihler</strong></p>
+      <p><strong data-i18n="about.techTitle">Technical choices</strong></p>
       <ul>
-        <li>Tek Firebase projesi, her repo ayrı hosting sitesi</li>
-        <li>Statik dosyalar ve otomatik deploy</li>
-        <li>Veri gereken uygulamalarda Firestore ve güvenlik kuralları</li>
-        <li>Merkezi oturum: <a href="https://auth.collectivebucket.com">auth.collectivebucket.com</a></li>
+        <li data-i18n="about.tech1">One Firebase project, a separate hosting site per repo</li>
+        <li data-i18n="about.tech2">Static files and automatic deploys</li>
+        <li data-i18n="about.tech3">Firestore and security rules for apps that need data</li>
+        <li><span data-i18n="about.tech4">Central session:</span> <a href="https://auth.collectivebucket.com">auth.collectivebucket.com</a></li>
       </ul>
 
-      <p><strong>Tasarım tercihleri</strong></p>
+      <p><strong data-i18n="about.designTitle">Design choices</strong></p>
       <ul>
-        <li>Açık tema, pastel mint vurgu</li>
-        <li>Inter ve JetBrains Mono tipografisi</li>
-        <li>Paylaşılan shell bileşenleri</li>
+        <li data-i18n="about.design1">Light theme, pastel mint accent</li>
+        <li data-i18n="about.design2">Inter and JetBrains Mono typography</li>
+        <li data-i18n="about.design3">Shared shell components</li>
       </ul>
     </div>
   </section>
@@ -153,6 +153,7 @@
 
 <footer data-cb-shell="footer"></footer>
 
+<script src="assets/i18n.js"></script>
 <script src="assets/repos.js"></script>
 <script src="assets/shell.js" defer></script>
 <script src="https://auth.collectivebucket.com/client.js" defer></script>

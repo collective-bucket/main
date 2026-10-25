@@ -1,13 +1,24 @@
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 async function renderRepos() {
   const list = document.getElementById("repo-list");
   if (!list) return;
+  const i18n = window.CBI18n;
+  const t = i18n ? i18n.t : (key) => key;
+  const pick = i18n ? i18n.pick : (value) => (typeof value === "string" ? value : (value && value.en) || "");
 
   let repos = [];
   try {
     const res = await fetch("assets/repos.json");
     repos = await res.json();
   } catch (err) {
-    list.innerHTML = '<p class="repo-error">Repo listesi yüklenemedi.</p>';
+    list.innerHTML = `<p class="repo-error">${escapeHtml(t("repos.error"))}</p>`;
     return;
   }
 
@@ -17,7 +28,7 @@ async function renderRepos() {
         repo.visibility === "private"
           ? '<span class="repo-badge private">private</span>'
           : repo.live
-          ? '<span class="repo-badge live">canlı</span>'
+          ? `<span class="repo-badge live">${escapeHtml(t("repos.live"))}</span>`
           : "";
       const liveLink = repo.live
         ? `<a href="${repo.live}" target="_blank" rel="noopener">${repo.live.replace("https://", "")}</a>`
@@ -28,12 +39,12 @@ async function renderRepos() {
             <h3><a href="${repo.url}" target="_blank" rel="noopener">${repo.name}</a></h3>
             ${badge}
           </div>
-          <p>${repo.description}</p>
+          <p>${escapeHtml(pick(repo.description))}</p>
           <div class="repo-card-footer">
             <span class="repo-lang"><span class="dot"></span>${repo.language}</span>
             <span class="repo-card-links">
               ${liveLink}
-              <a href="${repo.url}" target="_blank" rel="noopener">repo →</a>
+              <a href="${repo.url}" target="_blank" rel="noopener">${escapeHtml(t("repos.repoLink"))}</a>
             </span>
           </div>
         </article>`;
@@ -42,8 +53,8 @@ async function renderRepos() {
 
   const newCard = `
     <article class="repo-card repo-card-new">
-      <p>Yeni bir fikir mi deniyorsun?</p>
-      <a href="https://github.com/organizations/collective-bucket/repositories/new" target="_blank" rel="noopener">+ Repo oluştur</a>
+      <p>${escapeHtml(t("repos.newPrompt"))}</p>
+      <a href="https://github.com/organizations/collective-bucket/repositories/new" target="_blank" rel="noopener">${escapeHtml(t("repos.newLink"))}</a>
     </article>`;
 
   list.innerHTML = cards + newCard;
