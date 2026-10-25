@@ -28,8 +28,9 @@ jobs:
       - name: Deploy preview channel
         id: deploy
         run: |
+          set -o pipefail
           npx firebase-tools hosting:channel:deploy "pr-${{ github.event.number }}" \
-            --only hosting:main \
+            --only main \
             --token "${{ steps.auth.outputs.access_token }}" \
             --non-interactive \
             | tee deploy-output.txt
