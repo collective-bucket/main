@@ -362,8 +362,33 @@
     display: none;
   }
 
+  .cb-shell-header .wrap {
+    gap: 12px;
+  }
+
+  .cb-shell-brand {
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  .cb-shell-brand span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .cb-shell-cta {
-    gap: 8px;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  .cb-shell-cta .btn {
+    padding: 8px 12px;
+  }
+
+  .cb-shell-lang-toggle {
+    padding: 8px;
   }
 
   .cb-shell-auth-toggle {
