@@ -1,92 +1,95 @@
-# Katkı Rehberi
+# Contributing Guide
 
-Bu doküman, `collective-bucket` organizasyonuna yeni bir repo/PoC eklemek ya da
-var olan bir repoya katkı sağlamak isteyenler için hazırlandı. Referans
-implementasyon [collective-bucket/menu](https://github.com/collective-bucket/menu)
-reposudur — aşağıdaki adımlar o repodaki çalışan kurulumun genelleştirilmiş
-hâlidir.
+This document is for anyone who wants to add a new repo/PoC to the
+`collective-bucket` organization or contribute to an existing repo. The
+reference implementation is the
+[collective-bucket/menu](https://github.com/collective-bucket/menu) repo — the
+steps below are a generalized version of the working setup in that repo.
 
-## Mimari
+## Architecture
 
-- **Tek bir Firebase projesi**: `collective-bucket`. Her repo, bu proje
-  altında ayrı bir Hosting **site**'ı olarak yayınlanır (ayrı proje açmak
-  yerine).
-- **Her repo kendi site'ına ve target'ına sahiptir**: örnek `main` →
-  `cbucket-main`, `menu` → `cbucket-menu`. Yeni repo için isim deseni
-  `cbucket-<repo-adı>`.
-- **Her site bir subdomain'e bağlanır**: `cbucket-menu` →
-  `menu.collectivebucket.com`. (Bu repo — `main` — istisna olarak kök alan
-  adına, `collectivebucket.com` apex'ine bağlanır.)
-- **CI/CD**: GitHub Actions, `FIREBASE_TOKEN` secret'ı ile `firebase-tools
-  deploy` çalıştırır (servis hesabı key'i değil — org policy buna izin
-  vermiyor). `main`'e her push canlıya deploy eder, her PR ayrı bir önizleme
-  linki üretir.
+- **A single Firebase project**: `collective-bucket`. Each repo is published as
+  a separate Hosting **site** under this project (instead of opening a separate
+  project).
+- **Each repo has its own site and target**: for example `main` →
+  `cbucket-main`, `menu` → `cbucket-menu`. The naming pattern for a new repo is
+  `cbucket-<repo-name>`.
+- **Each site is attached to a subdomain**: `cbucket-menu` →
+  `menu.collectivebucket.com`. (This repo — `main` — is the exception and is
+  attached to the root domain, the `collectivebucket.com` apex.)
+- **CI/CD**: GitHub Actions runs `firebase-tools deploy` with the
+  `FIREBASE_TOKEN` secret (not a service account key — the org policy doesn't
+  allow it). Every push to `main` deploys to production, and every PR produces
+  its own preview link.
 
-## Yeni bir repo/PoC ekleme
+## Adding a new repo/PoC
 
-### 1. Repo oluştur
+### 1. Create the repo
 
+Open a new repo in the
 [collective-bucket](https://github.com/organizations/collective-bucket/repositories/new)
-organizasyonunda yeni bir repo aç, ya da var olan bir repoya PR gönder.
+organization, or send a PR to an existing repo.
 
-### 2. Dosya yapısı
+### 2. File structure
 
-Statik dosyalarını (`index.html`, CSS, JS, görseller) `public/` klasörü altına
-koy. Build aracı zorunlu değil.
+Put your static files (`index.html`, CSS, JS, images) under the `public/`
+folder. A build tool is not required.
 
-### 3. Firebase Hosting dosyaları
+### 3. Firebase Hosting files
 
-Bu repodaki (`main`) veya `menu` reposundaki şu dosyaları kopyalayıp isimleri
-değiştir:
+Copy the following files from this repo (`main`) or the `menu` repo and rename
+them:
 
-- `firebase.json` — `"target"` alanını repo adınla değiştir.
-- `.firebaserc` — `targets.collective-bucket.hosting` altına
-  `"<repo-adı>": ["cbucket-<repo-adı>"]` ekle.
-- `package.json` — `scripts.deploy`'daki `--only hosting:<repo-adı>` kısmını
-  güncelle.
-- `.github/workflows/firebase-hosting-merge.yml` ve
-  `firebase-hosting-pull-request.yml` — `hosting:<repo-adı>` kısımlarını
-  güncelle.
+- `firebase.json` — replace the `"target"` field with your repo name.
+- `.firebaserc` — add `"<repo-name>": ["cbucket-<repo-name>"]` under
+  `targets.collective-bucket.hosting`.
+- `package.json` — update the `--only hosting:<repo-name>` part of
+  `scripts.deploy`.
+- `.github/workflows/firebase-hosting-merge.yml` and
+  `firebase-hosting-pull-request.yml` — update the `hosting:<repo-name>` parts.
 
-### 4. Firebase site + target oluşturma
+### 4. Create the Firebase site + target
 
 ```bash
 npx firebase-tools login
-# admin@collectivebucket.com hesabıyla giriş yap
+# sign in with the admin@collectivebucket.com account
 
 npx firebase-tools use collective-bucket
-npx firebase-tools hosting:sites:create cbucket-<repo-adı>
-npx firebase-tools target:apply hosting <repo-adı> cbucket-<repo-adı>
+npx firebase-tools hosting:sites:create cbucket-<repo-name>
+npx firebase-tools target:apply hosting <repo-name> cbucket-<repo-name>
 ```
 
-### 5. `FIREBASE_TOKEN` secret'ı
+### 5. The `FIREBASE_TOKEN` secret
 
-Token tüm repolar arasında paylaşılabilir, ama her repoya ayrıca eklenmesi
-gerekir:
+The token can be shared across all repos, but it has to be added to each repo
+separately:
 
 ```bash
 npx firebase-tools login:ci
-# çıktıdaki token'ı kopyala
+# copy the token from the output
 
-gh secret set FIREBASE_TOKEN --repo collective-bucket/<repo-adı> --body "BURAYA_TOKEN"
+gh secret set FIREBASE_TOKEN --repo collective-bucket/<repo-name> --body "TOKEN_HERE"
 ```
 
-### 6. Custom domain (opsiyonel)
+### 6. Custom domain (optional)
 
-Firebase Console → proje `collective-bucket` → Hosting → ilgili site →
-**Add custom domain** → `<repo-adı>.collectivebucket.com`. Verilen TXT/A
-kayıtlarını DNS panelinde ekleyip doğrula.
+Firebase Console → project `collective-bucket` → Hosting → the relevant site →
+**Add custom domain** → `<repo-name>.collectivebucket.com`. Add the given
+TXT/A records in the DNS panel and verify.
 
-### 7. `repos.json` ve `apps.json`'a ekle
+### 7. Add it to `repos.json` and `apps.json`
 
-Bu repodaki [public/assets/repos.json](assets/repos.json) dosyasına yeni reponu
-ekleyen bir PR gönder, böylece anasayfada listelenir. Canlı bir uygulama ise
-footer menüsü için [public/assets/apps.json](assets/apps.json) kaydı da gerekir.
+Send a PR that adds your new repo to
+[public/assets/repos.json](assets/repos.json) in this repo so it is
+listed on the home page. The `description` field is bilingual:
+`{ "en": "...", "tr": "..." }`. If it is a live app, it also needs an entry in
+[public/assets/apps.json](assets/apps.json) for the footer menu.
 
-### 8. Ortak shell
+### 8. Shared shell
 
-Header ve footer [tasarım kılavuzu](DESIGN.md)ndaki `shell.js` / `shell.css`
-ile eklenir. Uygulama adı header’da yazılmaz; logo ana siteye gider.
+The header and footer are added with `shell.js` / `shell.css` from the
+[design guide](DESIGN.md). The app name is not written in the header;
+the logo links to the main site.
 
 ```html
 <link rel="stylesheet" href="https://collectivebucket.com/assets/shell.css" />
@@ -96,39 +99,38 @@ ile eklenir. Uygulama adı header’da yazılmaz; logo ana siteye gider.
 <script src="https://auth.collectivebucket.com/client.js" defer></script>
 ```
 
-Korumalı sayfalar auth’a otomatik yönlenmez; ziyaretçi **Üye Girişi** veya
-**Giriş yap** ile gider.
+Protected pages don't redirect to auth automatically; the visitor goes there
+via **Sign in** (**Üye Girişi**) or an in-page sign-in button.
 
-## Ortak oturum yönetimi
+## Shared session management
 
-Collective Bucket projeleri merkezi giriş için
-[collective-bucket/auth](https://github.com/collective-bucket/auth) reposunu ve
-`auth.collectivebucket.com` adresini kullanır. Nav alanına boş bir oturum
-konteyneri ve merkezi istemci scriptini eklemek yeterlidir:
+Collective Bucket projects use the
+[collective-bucket/auth](https://github.com/collective-bucket/auth) repo and
+the `auth.collectivebucket.com` address for central sign-in. Adding an empty
+session container and the central client script to the nav is enough:
 
 ```html
 <div data-cb-auth></div>
 <script src="https://auth.collectivebucket.com/client.js" defer></script>
 ```
 
-Oturuma programatik erişim:
+Programmatic access to the session:
 
 ```js
 const session = await window.CollectiveBucketAuth.getSession();
 ```
 
-Kalıcı Firebase oturumu yalnızca auth origin'inde tutulur. Tüketici uygulama
-kısa ömürlü ID token'ı bellekte alır; refresh token paylaşılmaz. Firestore gibi
-kaynaklarda gerçek erişim kontrolü mutlaka Firebase Security Rules ile
-`request.auth.uid` üzerinden yapılmalıdır.
+The persistent Firebase session is kept only on the auth origin. The consuming
+app receives a short-lived ID token in memory; the refresh token is not shared.
+Real access control on resources such as Firestore must always be done with
+Firebase Security Rules via `request.auth.uid`.
 
-## Kapsam
+## Scope
 
-- PoC'ler Firebase Spark (ücretsiz) katmanındaki araçlarla sınırlıdır:
-  Hosting, Authentication, Firestore, Cloud Functions ücretsiz kotası vb.
-- Ücretli üçüncü parti servisler veya Firebase ücretli (Blaze) katmanı gerektiren
-  fikirler bu yapının kapsamı dışındadır.
-- Ortak ihtiyaçlar için Collective Bucket'ın kendi geliştirdiği hazır araçlar
-  kullanılır; örneğin merkezi oturum için
-  [collective-bucket/auth](https://github.com/collective-bucket/auth)
-  (`auth.collectivebucket.com`).
+- PoCs are limited to tools in the Firebase Spark (free) tier: Hosting,
+  Authentication, Firestore, the Cloud Functions free quota, etc.
+- Ideas that need paid third-party services or the paid Firebase (Blaze) tier
+  are out of scope for this setup.
+- For shared needs, use the ready-made tools Collective Bucket builds itself;
+  for example [collective-bucket/auth](https://github.com/collective-bucket/auth)
+  (`auth.collectivebucket.com`) for central sign-in.

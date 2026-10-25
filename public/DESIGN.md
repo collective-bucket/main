@@ -1,73 +1,79 @@
-# Collective Bucket tasarım kılavuzu
+# Collective Bucket design guide
 
-Bu dosya, Collective Bucket altındaki yeni ve mevcut uygulamalar için ortak
-görünüm, oturum ve form standardını tanımlar. Yeni bir sohbet veya geliştirici
-için kaynak burasıdır; yalnızca AI oturum belleğine güvenilmez.
+This file defines the shared look, session and form standard for new and
+existing apps under Collective Bucket. It is the source of truth for a new chat
+or developer; don't rely on AI session memory alone.
 
-Canlı çalışan parça: [`shell.js`](assets/shell.js), [`shell.css`](assets/shell.css),
+Live parts: [`shell.js`](assets/shell.js), [`shell.css`](assets/shell.css),
 [`apps.json`](assets/apps.json).
 
 ## Header
 
-- Sol: Collective Bucket logosu → `https://collectivebucket.com`
-- Uygulama adı header’da yazılmaz; kimlik `<title>` ve sayfa başlığında kalır
-- Sağ: opsiyonel uygulama CTA’ları + `data-cb-auth` (**Üye Girişi** / e-posta + Çıkış)
-- Entegrasyon:
+- Left: Collective Bucket logo → `https://collectivebucket.com`
+- The app name is not written in the header; identity stays in `<title>` and the page heading
+- Right: optional app CTAs + `data-cb-auth` (**Sign in** / e-mail + Sign out)
+- Integration:
 
 ```html
 <link rel="stylesheet" href="https://collectivebucket.com/assets/shell.css" />
 <header data-cb-shell="header">
   <nav data-cb-shell-nav>
-    <a href="/incomes">Gelirler</a>
+    <a href="/incomes">Incomes</a>
   </nav>
   <div data-cb-shell-cta>
-    <a class="btn btn-primary" href="/edit">Yeni ilan</a>
+    <a class="btn btn-primary" href="/edit">New listing</a>
   </div>
 </header>
 <script src="https://collectivebucket.com/assets/shell.js" defer></script>
 <script src="https://auth.collectivebucket.com/client.js" defer></script>
 ```
 
+## Language
+
+- Shell copy (auth toggle, footer links) follows `<html lang>`: `tr` → Turkish, anything else → English
+- Add `data-cb-shell-lang` to the header placeholder to show the language picker (flag button, Türkçe / English) in the top right
+- The picker stores the choice in `localStorage` (`cb-lang`) and reloads; the page must set `<html lang>` from that value (on the main site `assets/i18n.js` does this)
+
 ## Footer
 
-- Sol: logolu Collective Bucket; hover / odak / tıklama ile diğer uygulamalar
-- Sağ: GitHub, Katkı Rehberi, MIT Lisansı
-- Entegrasyon: `<footer data-cb-shell="footer"></footer>`
-- Yeni canlı uygulama eklenince [`apps.json`](assets/apps.json) güncellenir
+- Left: Collective Bucket with logo; other apps on hover / focus / click
+- Right: GitHub, Contributing Guide, MIT License
+- Integration: `<footer data-cb-shell="footer"></footer>`
+- Update [`apps.json`](assets/apps.json) when a new live app is added
 
 ## Auth
 
-- Oturum yokken sayfa **auth’a otomatik yönlenmez**
-- Ziyaretçi **Üye Girişi** veya sayfa içi **Giriş yap** ile gider
-- Yazma işlemlerinde `requireSession()` yalnızca hata fırlatır:
+- Without a session the page **does not redirect to auth automatically**
+- The visitor goes there via **Sign in** or an in-page sign-in button
+- For write operations `requireSession()` only throws an error:
 
 ```js
 async function requireSession() {
   var session = await getOptionalSession();
   if (!session || !session.idToken) {
-    throw new Error("Kaydetmek için giriş yap.");
+    throw new Error("Sign in to save.");
   }
   return session;
 }
 ```
 
-## Form ve liste
+## Forms and lists
 
-| Öğe | Standart |
-|-----|----------|
+| Item | Standard |
+|------|----------|
 | Font | Inter |
-| Input | 16px (iOS zoom olmasın) |
-| Renk | `--accent: #2f9a7c`, `--bg: #fbfbfa`, `--danger: #a33a3a` |
+| Input | 16px (no iOS zoom) |
+| Color | `--accent: #2f9a7c`, `--bg: #fbfbfa`, `--danger: #a33a3a` |
 | Container | `.wrap` max-width 880px |
-| Form | `<dialog class="modal">`, Vazgeç, Escape / backdrop |
-| Liste | `.list-item.is-action`, Enter / Space |
-| Terimler | Üye Girişi, Giriş yap, Vazgeç, Sil |
+| Form | `<dialog class="modal">`, Cancel, Escape / backdrop |
+| List | `.list-item.is-action`, Enter / Space |
+| Terms | Sign in, Cancel, Delete (TR: Üye Girişi, Giriş yap, Vazgeç, Sil) |
 
-## Yeni repo checklist
+## New repo checklist
 
-1. `shell.css` + `shell.js` + auth `client.js` ekle
-2. Header/footer placeholder’larını koy
-3. Soft auth kullan; `window.location` ile auth’a atlama
-4. [`repos.json`](assets/repos.json) ve [`apps.json`](assets/apps.json) güncelle
-5. Kökte MIT `LICENSE` dosyası olsun
-6. Firebase Hosting adımları için [CONTRIBUTING.md](CONTRIBUTING.md)
+1. Add `shell.css` + `shell.js` + auth `client.js`
+2. Place the header/footer placeholders
+3. Use soft auth; don't jump to auth with `window.location`
+4. Update [`repos.json`](assets/repos.json) and [`apps.json`](assets/apps.json)
+5. Have an MIT `LICENSE` file at the root
+6. See [CONTRIBUTING.md](CONTRIBUTING.md) for the Firebase Hosting steps

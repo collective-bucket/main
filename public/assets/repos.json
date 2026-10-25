@@ -1,7 +1,10 @@
 [
   {
     "name": "main",
-    "description": "Collective Bucket anasayfası ve açık kaynak repo dizini.",
+    "description": {
+      "en": "Collective Bucket home page and open-source repo directory.",
+      "tr": "Collective Bucket anasayfası ve açık kaynak repo dizini."
+    },
     "url": "https://github.com/collective-bucket/main",
     "language": "HTML",
     "visibility": "public",
@@ -9,7 +12,10 @@
   },
   {
     "name": "menu",
-    "description": "QR ile açılan, JSON tabanlı dijital menü demosu.",
+    "description": {
+      "en": "A QR-opened, JSON-based digital menu demo.",
+      "tr": "QR ile açılan, JSON tabanlı dijital menü demosu."
+    },
     "url": "https://github.com/collective-bucket/menu",
     "language": "JavaScript",
     "visibility": "public",
@@ -17,7 +23,10 @@
   },
   {
     "name": "auth",
-    "description": "Collective Bucket uygulamaları için merkezi giriş ve tek oturum.",
+    "description": {
+      "en": "Central sign-in and single session for Collective Bucket apps.",
+      "tr": "Collective Bucket uygulamaları için merkezi giriş ve tek oturum."
+    },
     "url": "https://github.com/collective-bucket/auth",
     "language": "JavaScript",
     "visibility": "public",
@@ -25,7 +34,10 @@
   },
   {
     "name": "pano",
-    "description": "QR ile paylaşılabilir ilan panosu.",
+    "description": {
+      "en": "A listing board you can share with a QR code.",
+      "tr": "QR ile paylaşılabilir ilan panosu."
+    },
     "url": "https://github.com/collective-bucket/pano",
     "language": "JavaScript",
     "visibility": "public",
@@ -33,7 +45,10 @@
   },
   {
     "name": "payback",
-    "description": "Yolculuk harcamalarını kişiler arasında denkleştir.",
+    "description": {
+      "en": "Settle trip expenses between people.",
+      "tr": "Yolculuk harcamalarını kişiler arasında denkleştir."
+    },
     "url": "https://github.com/collective-bucket/payback",
     "language": "JavaScript",
     "visibility": "public",
@@ -41,7 +56,10 @@
   },
   {
     "name": "budget",
-    "description": "Gelir, harcama ve birikim hedeflerini takip eden kişisel bütçe.",
+    "description": {
+      "en": "Personal budget that tracks income, spending and savings goals.",
+      "tr": "Gelir, harcama ve birikim hedeflerini takip eden kişisel bütçe."
+    },
     "url": "https://github.com/collective-bucket/budget",
     "language": "JavaScript",
     "visibility": "public",
@@ -49,7 +67,10 @@
   },
   {
     "name": "mindset",
-    "description": "Mindsetini bir numarayla paylaş. Açık okuma herkese, kapalı okuma yalnız sana.",
+    "description": {
+      "en": "Share your mindset with a number. The open reading is for everyone, the closed reading is for you alone.",
+      "tr": "Mindsetini bir numarayla paylaş. Açık okuma herkese, kapalı okuma yalnız sana."
+    },
     "url": "https://github.com/collective-bucket/mindset",
     "language": "JavaScript",
     "visibility": "public",

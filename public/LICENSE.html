@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MIT Lisansı | Collective Bucket</title>
-  <meta name="description" content="Collective Bucket kaynak kodu MIT lisansı altındadır." />
+  <title data-i18n="license.title">MIT License | Collective Bucket</title>
+  <meta name="description" content="Collective Bucket source code is licensed under the MIT License." data-i18n-attr="content:license.description" />
   <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,15 +13,15 @@
   <link rel="stylesheet" href="/assets/shell.css" />
 </head>
 <body>
-  <header data-cb-shell="header"></header>
+  <header data-cb-shell="header" data-cb-shell-lang></header>
   <main>
     <section class="hero" style="border-top:none;">
       <div class="wrap">
-        <h1>MIT Lisansı</h1>
-        <p class="lead">
-          Collective Bucket kaynak kodu MIT lisansı altındadır. Lisans yalnızca
-          yazılımı kapsar; kullanıcıların uygulamalara kaydettiği veriler
-          (bütçe, yolculuk, ilan vb.) bu metnin konusu değildir.
+        <h1 data-i18n="license.heading">MIT License</h1>
+        <p class="lead" data-i18n="license.lead">
+          Collective Bucket source code is licensed under the MIT License. The
+          license covers the software only; data users save in the apps
+          (budgets, trips, listings, etc.) is not covered by this text.
         </p>
       </div>
     </section>
@@ -52,6 +52,7 @@ SOFTWARE.</pre>
     </section>
   </main>
   <footer data-cb-shell="footer"></footer>
+  <script src="/assets/i18n.js"></script>
   <script src="/assets/shell.js" defer></script>
   <script src="https://auth.collectivebucket.com/client.js" defer></script>
 </body>

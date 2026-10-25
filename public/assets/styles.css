@@ -1,6 +1,6 @@
 /* ============================================================
-   Collective Bucket — Açık Tema
-   Tek vurgu rengi (pastel mint), açık zemin, sade bileşenler.
+   Collective Bucket — Light theme
+   Single accent color (pastel mint), light background, simple components.
    ============================================================ */
 
 :root {
@@ -379,7 +379,7 @@ section {
   font-weight: 600;
 }
 
-/* ---------- Steps (Yeni Oluştur) ---------- */
+/* ---------- Steps (Create new) ---------- */
 
 .steps {
   list-style: none;
