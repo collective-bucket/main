@@ -342,6 +342,8 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 12px;
   font-size: 13px;
   color: var(--text-faint);
   padding-top: 8px;
@@ -363,7 +365,9 @@ section {
 
 .repo-card-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
+  min-width: 0;
 }
 
 .repo-card-new {
@@ -518,7 +522,7 @@ footer .wrap {
     display: none;
   }
   .repo-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .about-facts {
     grid-template-columns: 1fr;
